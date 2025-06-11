@@ -4,7 +4,7 @@ const path = require('node:path');
 const { REST, Routes } = require('discord.js');
 require("dotenv").config()
 
-const log = require("./log.js")
+const log = require("./lib/log.js")
 
 const commands = [];
 

@@ -4,7 +4,7 @@ const fs = require("fs");
 const Sequelize = require("sequelize");
 require("dotenv").config();
 
-const log = require("../log.js");
+const log = require("../lib/log.js");
 
 module.exports = (client, Discord) => {
     client.models = new Discord.Collection()

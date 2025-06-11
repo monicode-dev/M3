@@ -1,7 +1,7 @@
 const path = require("node:path");
 const fs = require("fs");
 
-const log = require("../log.js");
+const log = require("../lib/log.js");
 
 module.exports = (client, _) => {
     const folderPath = path.join(path.dirname(), '../events');
