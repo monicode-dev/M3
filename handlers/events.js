@@ -4,7 +4,7 @@ const fs = require("fs");
 const log = require("../lib/log.js");
 
 module.exports = (client, _) => {
-    const folderPath = path.join(path.dirname(), '../events');
+    const folderPath = path.join(__dirname, '../events');
     const eventFiles = fs.readdirSync(folderPath).filter(file => file.endsWith('.js'));
     
     for (const file of eventFiles) {

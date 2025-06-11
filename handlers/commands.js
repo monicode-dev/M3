@@ -5,7 +5,7 @@ const log = require("../lib/log.js")
 
 module.exports = (client, Discord) => {
     client.commands = new Discord.Collection();
-    const foldersPath = path.join(path.dirname(), '../commands');
+    const foldersPath = path.join(__dirname, '../commands');
     const commandFolders = fs.readdirSync(foldersPath);
 
     for (const folder of commandFolders) {

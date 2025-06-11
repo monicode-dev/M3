@@ -16,7 +16,7 @@ module.exports = (client, Discord) => {
         logging: false
     });
 
-    const folderPath = path.join(path.dirname(), '../models');
+    const folderPath = path.join(__dirname, '../models');
     const modelFiles = fs.readdirSync(folderPath).filter(file => file.endsWith('.js'));
 
     for (const file of modelFiles) {
