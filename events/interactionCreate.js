@@ -1,4 +1,4 @@
-const { Events, MessageFlags } = require('discord.js');
+const { Events, MessageFlags, PresenceUpdateStatus } = require('discord.js');
 const log = require("../lib/log.js");
 
 module.exports = {
@@ -13,7 +13,15 @@ module.exports = {
         }
 
         try {
+            clearTimeout(interaction.client.statusChangeTimeout)
+            interaction.client.statusChangeTimeout = undefined
+            interaction.client.user.setStatus(PresenceUpdateStatus.Online);
+            
             await command.execute(interaction);
+            
+            interaction.client.statusChangeTimeout = setTimeout(() => {
+                interaction.client.user.setStatus(PresenceUpdateStatus.Idle); 
+            }, 60_000)
         } catch (error) {
             console.error(error);
             if (interaction.replied || interaction.deferred) {
