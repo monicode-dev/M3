@@ -8,7 +8,7 @@ const log = require("./lib/log.js")
 
 const commands = [];
 
-const foldersPath = path.join(path.dirname(), 'commands');
+const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
@@ -22,7 +22,7 @@ for (const folder of commandFolders) {
 		if ('data' in command && 'execute' in command) {
 			commands.push(command.data.toJSON());
 		} else {
-			log(`The command at ${filePath} is missing a required "data" or "execute" property.`, "warn");
+			log.error(`The command at ${filePath} is missing a required "data" or "execute" property.`);
 		}
 	}
 }
@@ -31,15 +31,15 @@ const rest = new REST().setToken(process.env.TOKEN);
 
 (async () => {
 	try {
-		log(`Started refreshing ${commands.length} application (/) commands.`);
+		log.info(`Started refreshing ${commands.length} application (/) commands.`);
 
 		const data = await rest.put(
 			Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
 			{ body: commands }
 		);
 
-		log(`Successfully reloaded ${data.length} application (/) commands.`);
+		log.info(`Successfully reloaded ${data.length} application (/) commands.`);
 	} catch (error) {
-		console.error(error);
+		log.trace(error);
 	}
 })();

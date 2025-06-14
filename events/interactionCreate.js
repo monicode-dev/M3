@@ -8,7 +8,7 @@ module.exports = {
         const command = interaction.client.commands.get(interaction.commandName);
 
         if (!command) {
-            log(`No command matching ${interaction.commandName} was found.`, "error");
+            log.error(`No command matching ${interaction.commandName} was found.`);
             return;
         }
 
@@ -23,7 +23,7 @@ module.exports = {
                 interaction.client.user.setStatus(PresenceUpdateStatus.Idle); 
             }, 60_000)
         } catch (error) {
-            console.error(error);
+            log.trace(error);
             if (interaction.replied || interaction.deferred) {
                 await interaction.followUp({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
             } else {

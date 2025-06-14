@@ -27,10 +27,10 @@ module.exports = {
             subcommand
                 .setName("remove")
                 .setDescription("Remove a stored quote")
-                .addUserOption(option =>
+                .addStringOption(option =>
                     option
-                        .setName('quotee')
-                        .setDescription('Who said the quote?')
+                        .setName('quote_id')
+                        .setDescription('What is the quote id?')
                         .setRequired(true))
         )
         .addSubcommandGroup(group =>
@@ -49,8 +49,7 @@ module.exports = {
                         .addUserOption(option =>
                             option
                                 .setName('quotee')
-                                .setDescription('Who said the quotes?')
-                                .setRequired(true))
+                                .setDescription('Who said the quotes?'))
                 )
         ),
     async execute(interaction) {

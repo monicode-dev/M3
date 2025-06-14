@@ -18,9 +18,9 @@ module.exports = (client, _) => {
                 client.on(event.name, (...args) => event.execute(...args));
             }
         } else {
-            log(`The event ${file} is missing a required "name" or "execute" property.`, "warn");
+            log.error(`The event at ${filePath} is missing a required "name" or "execute" property.`);
         }
     }
 
-    log("Event handler loaded!")
+    log.info("Event handler loaded!")
 }

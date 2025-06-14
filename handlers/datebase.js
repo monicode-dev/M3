@@ -27,10 +27,10 @@ module.exports = (client, Discord) => {
             client.models.set(modelFile.name, modelFile.model)
             modelFile.model.sync()
         } else {
-            log(`The database model at ${filePath} is missing a required "name" or "model" property.`, "warn");
+            log.error(`The database model at ${filePath} is missing a required "name" or "model" property.`);
         }
 
     }
 
-    log("Database handler loaded!")
+    log.info("Database handler loaded!")
 }

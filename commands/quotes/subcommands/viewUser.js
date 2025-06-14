@@ -3,7 +3,7 @@ const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require("
 module.exports = {
     async execute(interaction) {
         const quotesModel = interaction.client.models.get("quotes")
-        const quotee = interaction.options.getUser('quotee');
+        const quotee = interaction.options.getUser('quotee') || interaction.user;
         const quote_guild = interaction.guildId;
 
         const botAvatar = interaction.client.user.avatarURL() || interaction.client.user.defaultAvatarURL
@@ -14,7 +14,7 @@ module.exports = {
             const noUserQuotesEmbed = new EmbedBuilder()
                 .setTitle(`${quotee.displayName}'s Quotes`)
                 .setThumbnail(quotee.avatarURL())
-                .addFields({ name: `Well, this guy is boring`, value: `They don't have a single quote!` },)
+                .addFields({ name: `Well, this guy is boring`, value: `They don't have a single quote in this server!` },)
                 .setFooter({ text: `Showing 0/0`, iconURL: botAvatar })
                 .setTimestamp()
 

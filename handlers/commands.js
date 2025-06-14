@@ -17,10 +17,10 @@ module.exports = (client, Discord) => {
             if ('data' in command && 'execute' in command) {
                 client.commands.set(command.data.name, command);
             } else {
-                log(`The command at ${filePath} is missing a required "data" or "execute" property.`, "warn");
+                log.error(`The command at ${filePath} is missing a required "data" or "execute" property.`);
             }
         }
     }
 
-    log("Command handler loaded!")
+    log.info("Command handler loaded!")
 }

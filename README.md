@@ -1,6 +1,6 @@
 
 # M3
-Monika's Multi-(use/function/purpose) Machine 
+Monika's Multipurpose Machine 
 
 A Discord bot with many purposes
 
