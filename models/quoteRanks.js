@@ -2,12 +2,11 @@ const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
     return {
-        name: "quotes",
-        model: sequelize.define('quotes', {
+        name: "quoteRanks",
+        model: sequelize.define('quoteRanks', {
             quotee: Sequelize.BIGINT.UNSIGNED,
             quote_guild: Sequelize.BIGINT.UNSIGNED,
-            quoter: Sequelize.BIGINT.UNSIGNED,
-            quote: Sequelize.TEXT
+            quote_count: Sequelize.SMALLINT.UNSIGNED,
         })
     }
 };

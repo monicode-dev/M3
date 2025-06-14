@@ -1,8 +1,9 @@
 const { SlashCommandBuilder } = require('discord.js');
 const newCmd = require("./subcommands/new.js")
 const removeCmd = require("./subcommands/remove.js")
+const statsCmd = require('./subcommands/stats.js');
 const viewServerCmd = require("./subcommands/viewServer.js")
-const viewUserCmd = require("./subcommands/viewUser.js")
+const viewUserCmd = require("./subcommands/viewUser.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -33,6 +34,11 @@ module.exports = {
                         .setDescription('What is the quote id?')
                         .setRequired(true))
         )
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName("stats")
+                .setDescription("View the quote statistics of this server")
+        )
         .addSubcommandGroup(group =>
             group
                 .setName("view")
@@ -60,6 +66,8 @@ module.exports = {
             newCmd.execute(interaction)
         } else if (subcommand === "remove") {
             removeCmd.execute(interaction)
+        } else if (subcommand === "stats") {
+            statsCmd.execute(interaction)
         } else if (subcommandGroup === "view") {
             if (subcommand === "server") {
                 viewServerCmd.execute(interaction)
