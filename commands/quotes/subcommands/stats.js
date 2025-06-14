@@ -7,9 +7,6 @@ module.exports = {
 
         const botAvatar = interaction.client.user.avatarURL() || interaction.client.user.defaultAvatarURL
 
-        const serverMembersQuoteStats = await quoteRanksModel.findAll({ where: { quote_guild: interaction.guildId } })
-        const oldestQuoteDate = await quotesModel.min("createdAt")
-        const newestQuoteDate = await quotesModel.max("createdAt")
         const serverQuoteStats = await quotesModel.findAll({ where: { quote_guild: interaction.guildId } })
 
         let totalServerQuotes = serverQuoteStats.length
@@ -17,6 +14,7 @@ module.exports = {
         if (totalServerQuotes === 0) {
             const noServerQuotesEmbed = new EmbedBuilder()
                 .setTitle(`${interaction.guild.name}'s Quotes Stats`)
+                .setColor("#8461aa")
                 .setThumbnail(interaction.guild.iconURL())
                 .addFields({ name: `Well, this server is boring`, value: `No one has a single quote!` })
                 .setFooter({ text: `M3`, iconURL: botAvatar })
@@ -24,6 +22,10 @@ module.exports = {
 
             await interaction.reply({ embeds: [noServerQuotesEmbed] });
         } else {
+            const serverMembersQuoteStats = await quoteRanksModel.findAll({ where: { quote_guild: interaction.guildId } })
+            const oldestQuoteDate = await quotesModel.min("createdAt")
+            const newestQuoteDate = await quotesModel.max("createdAt")
+
             let ranked = [{ quote_count: 0 }]
             for (let i = 0; i < serverMembersQuoteStats.length; i++) {
                 const rankEntry = serverMembersQuoteStats[i];
@@ -45,6 +47,7 @@ module.exports = {
 
             const serverStatsEmbeds = new EmbedBuilder()
                 .setTitle(`${interaction.guild.name}'s Quotes Stats`)
+                .setColor("#eedced")
                 .setThumbnail(interaction.guild.iconURL())
                 .addFields({ name: "Server Stats:", value: `Total quotes: ${totalServerQuotes}\nOldest quote: <t:${new Date(oldestQuoteDate).valueOf() / 1000}:f>\nNewest quote: <t:${new Date(newestQuoteDate).valueOf() / 1000}:f>`, inline: true })
                 .addFields({ name: "", value: "", inline: true })

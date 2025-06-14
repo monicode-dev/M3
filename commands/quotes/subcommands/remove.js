@@ -29,6 +29,7 @@ module.exports = {
 
             const toBeDeletedQuoteEmbed = new EmbedBuilder()
                 .setTitle(`Quote from ${quotee.displayName}`)
+                .setColor("#2d0343")
                 .setThumbnail(quotee.avatarURL())
                 .addFields({ name: `\`\`\`ID: ${quoteById.id}\`\`\``, value: "", inline: true })
                 .addFields({ name: `<t:${new Date(quoteById.createdAt).valueOf() / 1000}:f>:`, value: `\`\`\`${quoteById.quote}\`\`\``, inline: true })
@@ -42,7 +43,7 @@ module.exports = {
                 row.components[1].setLabel("Yes, delete")
 
                 try {
-                    const confirmation = await response.resource.message.awaitMessageComponent({ filter: collectorFilter, time: 60_000 });
+                    const confirmation = await response.resource.message.awaitMessageComponent({ filter: collectorFilter, time: 30_000 });
 
                     if (confirmation.customId === 'confirmDelete') {
                         if (pass === 0) {
@@ -53,10 +54,10 @@ module.exports = {
                             await confirmation.update({ content: `Deleted the following quote:`, components: [] });
                         }
                     } else if (confirmation.customId === 'cancelDelete') {
-                        await confirmation.update({ content: 'Delete was cancelled', components: [], embeds: [] });
+                        await confirmation.update({ content: 'Delete was cancelled.', components: [], embeds: [] });
                     }
                 } catch {
-                    await interaction.editReply({ content: 'Confirmation not received within 1 minute, cancelling delete', components: [], embeds: [] });
+                    await interaction.editReply({ content: 'Confirmation not received within 30 seconds, cancelling delete.', components: [], embeds: [] });
                 }
             }
 

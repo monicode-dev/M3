@@ -13,6 +13,7 @@ module.exports = {
         if (userQuotes.length === 0) {
             const noUserQuotesEmbed = new EmbedBuilder()
                 .setTitle(`${quotee.displayName}'s Quotes`)
+                .setColor("#8461aa")
                 .setThumbnail(quotee.avatarURL())
                 .addFields({ name: `Well, this guy is boring`, value: `They don't have a single quote in this server!` },)
                 .setFooter({ text: `Showing 0/0`, iconURL: botAvatar })
@@ -25,6 +26,7 @@ module.exports = {
 
                 const userQuotesEmbed = new EmbedBuilder()
                     .setTitle(`${quotee.displayName}'s Quotes | Page ${page + 1}`)
+                    .setColor("#eedced")
                     .setThumbnail(quotee.avatarURL())
                     .setTimestamp()
                     .setFooter({ text: `Showing ${offset}-${offset + 5}/${userQuotes.length}`, iconURL: botAvatar });

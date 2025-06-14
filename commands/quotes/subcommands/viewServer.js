@@ -12,6 +12,7 @@ module.exports = {
         if (serverQuotes.length === 0) {
             const noServerQuotesEmbed = new EmbedBuilder()
                 .setTitle(`${interaction.guild.name}'s Quotes`)
+                .setColor("#8461aa")
                 .setThumbnail(interaction.guild.iconURL())
                 .addFields({ name: `Well, this server is boring`, value: `No one has a single quote!` })
                 .setFooter({ text: `Showing 0/0`, iconURL: botAvatar })
@@ -23,8 +24,9 @@ module.exports = {
                 const offset = page * 5
 
                 const serverQuotesEmbed = new EmbedBuilder()
-                .setTitle(`${interaction.guild.name}'s Quotes | Page ${page + 1}`)
-                .setThumbnail(interaction.guild.iconURL())
+                    .setTitle(`${interaction.guild.name}'s Quotes | Page ${page + 1}`)
+                    .setColor("#eedced")
+                    .setThumbnail(interaction.guild.iconURL())
                     .setTimestamp()
                     .setFooter({ text: `Showing ${offset}-${offset + 5}/${serverQuotes.length}`, iconURL: botAvatar });
 

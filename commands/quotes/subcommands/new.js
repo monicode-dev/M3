@@ -32,6 +32,7 @@ module.exports = {
 
         const addedNewQuoteEmbed = new EmbedBuilder()
             .setTitle(`Successfully added new quote!`)
+            .setColor("#eedced")
             .setThumbnail(quotee.avatarURL())
             .addFields({ name: `New quote for ${quotee.displayName}:`, value: `\`\`\`${quote}\`\`\`` },)
             .setFooter({ text: `M3`, iconURL: botAvatar })
