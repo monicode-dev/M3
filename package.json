@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node . | pino-pretty -i pid,hostname -t 'HH:MM:ss.l'"
+    "start": "node . | pino-pretty -i pid,hostname -t 'HH:MM:ss.l'",
+    "deployCmds": "node deployCommands.js | pino-pretty -i pid,hostname -t 'HH:MM:ss.l'"
   },
   "author": "monika@monicode.dev",
   "license": "ISC",

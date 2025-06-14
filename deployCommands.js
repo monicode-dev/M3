@@ -33,10 +33,19 @@ const rest = new REST().setToken(process.env.TOKEN);
 	try {
 		log.info(`Started refreshing ${commands.length} application (/) commands.`);
 
-		const data = await rest.put(
-			Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
-			{ body: commands }
-		);
+		let data;
+
+		if (process.env.DEV === "yes") {
+			data = await rest.put(
+				Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
+				{ body: commands }
+			);
+		} else {
+			data = await rest.put(
+				Routes.applicationCommands(process.env.CLIENT_ID),
+				{ body: commands }
+			);
+		}
 
 		log.info(`Successfully reloaded ${data.length} application (/) commands.`);
 	} catch (error) {
