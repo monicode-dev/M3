@@ -1,18 +1,20 @@
 {
   "name": "monibot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node . | pino-pretty -i pid,hostname -t 'HH:MM:ss.l'",
+    "dev": "DEBUG=* node -r pino-debug . | pino-pretty -i pid,hostname -t 'HH:MM:ss.l'",
     "deployCmds": "node deployCommands.js | pino-pretty -i pid,hostname -t 'HH:MM:ss.l'"
   },
   "author": "monika@monicode.dev",
   "license": "ISC",
   "description": "Monika's Multipurpose Machine",
   "dependencies": {
-    "discord.js": "14.19.*",
-    "dotenv": ">=16.5.0",
+    "dayjs": "^1.11.13",
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.5.0",
     "mysql2": "^3.14.1",
     "sequelize": "^6.37.7"
   },
@@ -21,6 +23,7 @@
     "eslint": "^9.28.0",
     "globals": "^16.2.0",
     "pino": "^9.7.0",
+    "pino-debug": "^3.0.0",
     "pino-pretty": "^13.0.0"
   }
 }
