@@ -13,7 +13,6 @@ module.exports = {
         const pingEmbed = new EmbedBuilder()
             .setTitle(`M3's Ping | 🏓`)
             .setColor("#eedced")
-            .setThumbnail(interaction.guild.iconURL())
             .addFields({ name: "Round-trip latency:", value: `\`${current_time - interaction.createdTimestamp}ms\`` })
             .setFooter({ text: `M3`, iconURL: botAvatar })
             .setTimestamp()
