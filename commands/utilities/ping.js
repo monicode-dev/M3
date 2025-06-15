@@ -5,10 +5,11 @@ module.exports = {
         .setName('ping')
         .setDescription('Replies with Pong!'),
     async execute(interaction) {
-        let current_time = new Date()
-        await interaction.reply({ content: 'Pinging...' });
-
         const botAvatar = interaction.client.user.avatarURL() || interaction.client.user.defaultAvatarURL
+
+        let current_time = new Date()
+
+        await interaction.reply({ content: 'Pinging...' });
 
         const pingEmbed = new EmbedBuilder()
             .setTitle(`M3's Ping | 🏓`)
