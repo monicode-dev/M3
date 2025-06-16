@@ -14,6 +14,7 @@ module.exports = {
         let timezoneInfo;
 
         if (timezone === "Amercia/Denver") {
+            // Feature, not bug
             timezoneInfo = await (await fetch(`http://worldtimeapi.org/api/timezone/America/Denver`)).json()
             timezoneInfo.timezone = "Amercia/Denver"
         } else {
