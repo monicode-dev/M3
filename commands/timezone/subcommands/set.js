@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, MessageFlags } = require("discord.js");
 
 const dayjs = require("dayjs")
 const utc = require("dayjs/plugin/utc");
@@ -29,13 +29,13 @@ module.exports = {
                 .setTitle(`Successfully set your timezone!`)
                 .setColor("#eedced")
                 .setThumbnail(interaction.user.avatarURL())
-                .addFields({ name: `${timezoneInfo.timezone.replace("_", " ")}:`, value: `UTC Offset: \`${timezoneInfo.utc_offset}\`\nAbbreviation: \`${timezoneInfo.abbreviation}\`` },)
+                .addFields({ name: `${timezoneInfo.timezone.replace("_", " ")}:`, value: `UTC Offset: \`${timezoneInfo.utc_offset}\`` },)
                 .setFooter({ text: `Powered by WorldTimeAPI.org`, iconURL: botAvatar })
                 .setTimestamp()
 
-            interaction.reply({ embeds: [setTimezoneEmbed] })
+            interaction.reply({ embeds: [setTimezoneEmbed], flags: MessageFlags.Ephemeral })
         } else {
-            interaction.reply({ content: "Ivalid timezone!" });
+            interaction.reply({ content: "Ivalid timezone!", flags: MessageFlags.Ephemeral });
         }
     }
 }
