@@ -35,7 +35,7 @@ module.exports = {
 
             interaction.reply({ embeds: [setTimezoneEmbed] })
         } else {
-            interaction.reply({ content: "Invaild timezone!" });
+            interaction.reply({ content: "Ivalid timezone!" });
         }
     }
 }

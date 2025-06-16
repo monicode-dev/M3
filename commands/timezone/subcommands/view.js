@@ -40,8 +40,8 @@ module.exports = {
                 .setColor("#eedced")
                 .setTitle(`${user.displayName}'s Timezone Info`)
                 .setThumbnail(userAvatar)
-                .addFields({ name: `${timezoneInfo.timezone.replace("_", " ")}:`, value: `UTC Offset: \`${timezoneInfo.utc_offset}\`\nAbbreviation: \`${timezoneInfo.abbreviation}\``, inline: true })
-                .addFields({ name: "Current Date and Time:", value: `Date: \`${dateFormated}\`\nTime (12hr): \`${time12HrFormated}\`\nTime (24hr): \`${time24HrFormated}\``, inline: true })
+                .addFields({ name: `${timezoneInfo.timezone.replace("_", " ")}:`, value: `UTC Offset: \`${timezoneInfo.utc_offset}\``, inline: true })
+                .addFields({ name: "Current Date and Time:", value: `Date: \`${dateFormated}\`\nTime (24hr): \`${time24HrFormated}\`\nTime (12hr): \`${time12HrFormated}\``, inline: true })
                 .setFooter({ text: `Powered by WorldTimeAPI.org`, iconURL: botAvatar })
                 .setTimestamp()
 
@@ -52,7 +52,7 @@ module.exports = {
                     timezoneInfoEmbed.addFields({ name: "Daylight Savings Time:", value: `It is currently not DST for ${timezoneInfo.timezone.replace("_", " ")}\n\nDST Start: <t:${new Date(timezoneInfo.dst_from).valueOf() / 1000}:f>\nDST End: <t:${new Date(timezoneInfo.dst_until).valueOf() / 1000}:f>` })
                 }
             } else {
-                timezoneInfoEmbed.addFields({ name: "Daylight Savings Time:", value: `${timezoneInfo.timezone.replace("_", " ")} does not particpate in DST` })
+                timezoneInfoEmbed.addFields({ name: "Daylight Savings Time:", value: `${timezoneInfo.timezone.replace("_", " ")} does not participate in DST` })
             }
 
             return timezoneInfoEmbed;
